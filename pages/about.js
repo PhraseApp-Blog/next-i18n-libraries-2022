@@ -1,25 +1,27 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function About() {
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <Head>
-        <title>About us | i18n demo</title>
-        <meta
-          name="description"
-          content="A simple internationalization (i18n) demo"
-        />
+        <title>{`${t("aboutTitle")} | ${t("title")}`}</title>
+        <meta name="description" content={t("metaDescription")} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="main">
+      <main className="main" dir={i18n.dir()}>
         <nav className="nav">
           <div className="nav-left">
-            <Link href="/">Home</Link> | <Link href="/about">About</Link>
+            <Link href="/">{t("home")}</Link> |
+            <Link href="/about">{t("about")}</Link>
           </div>
 
           <div className="nav-right">
@@ -35,9 +37,17 @@ export default function About() {
         </nav>
 
         <p className={`content ${inter.className}`}>
-          A simple about page. Today is {new Date().toString()}.
+          {t("aboutContent", { val: new Date() })}
         </p>
       </main>
     </>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale)),
+    },
+  };
 }

@@ -1,0 +1,9 @@
+{
+  "title": "next-i18next demo",
+  "metaDescription": "A simple internationalization (i18n) demo",
+  "home": "Home",
+  "about": "About",
+  "homeContent": "This app has been localized using next-i18next.",
+  "aboutTitle": "About us",
+  "aboutContent": "This about page was last rendered on {{val, datetime}}."
+}
