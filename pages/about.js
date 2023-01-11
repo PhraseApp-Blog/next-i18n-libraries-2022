@@ -4,11 +4,11 @@ import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function About() {
   return (
     <>
       <Head>
-        <title>i18n demo</title>
+        <title>About us | i18n demo</title>
         <meta
           name="description"
           content="A simple internationalization (i18n) demo"
@@ -23,8 +23,7 @@ export default function Home() {
         </nav>
 
         <p className={`content ${inter.className}`}>
-          This app will be internationalized by a couple of Next.js i18n
-          libraries.
+          A simple about page. Today is {new Date().toString()}.
         </p>
       </main>
     </>
