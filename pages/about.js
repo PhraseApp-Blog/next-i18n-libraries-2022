@@ -18,8 +18,20 @@ export default function About() {
       </Head>
       <main className="main">
         <nav className="nav">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
+          <div className="nav-left">
+            <Link href="/">Home</Link> | <Link href="/about">About</Link>
+          </div>
+
+          <div className="nav-right">
+            <span>🌐</span>
+            <Link href="/" locale="en-US">
+              English
+            </Link>{" "}
+            |
+            <Link href="/" locale="ar-EG">
+              Arabic (العربية)
+            </Link>
+          </div>
         </nav>
 
         <p className={`content ${inter.className}`}>
